@@ -9,23 +9,24 @@ pipeline {
               
             }
         }
-        stage('Initialization') {
-            steps {
-                dir('app') {
-                    sh 'npm install express'
-                    sh 'npm start'
-                    }                   
-               
-            }
+            stage('Build Docker Img') {
+                steps {
+
+                    sh 'docker build -t nebihaamir123/my-nodejs-app:1.3'                
+                
+                }
+        }
+            stage('Initialization') {
+                steps {
+                    dir('app') {
+                        sh 'npm install express'
+                        sh 'npm start'
+                        }                   
+                
+                }
        }
     //    building docker img
-      stage('Build Docker Img') {
-            steps {
 
-                sh 'docker build -t nebihaamir123/my-nodejs-app:1.3'                
-               
-            }
-       }
 
     }
 }
