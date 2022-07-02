@@ -1,6 +1,9 @@
 pipeline {
     agent any
     // tools {nodejs "node"}
+    environment {
+        ENV_NAME = "${PATH}"
+    }
     tools {nodejs "nodejs"}
     stages {
         stage('Git Setup') {
